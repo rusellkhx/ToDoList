@@ -5,6 +5,8 @@ Test project uses the MVС architectural pattern with Swift 5.0.
 ## pods
 This test project includes the following iOS pods like:
   - Realm (used to saving and restoring data by task, sorting tasks by time)
+    User data model includes: login, password
+    Task data model includes: id, name, createdDateTime, notes, isCompleted, imageUrl
 
 ## Result
 
@@ -23,7 +25,7 @@ This test project includes the following iOS pods like:
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListWarning_wrong_registration2.png"/>
     </td>
     <td>
-    <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTasks.png"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTasks.png"/>
     </td>
     <td>
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListDetailTask.png"/>
