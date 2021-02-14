@@ -74,37 +74,6 @@ class DetailTaskViewController: UIViewController {
                                                          action: #selector(handleTap(_:))))
     }
     
-    private func saveImage(image: UIImage, nameImage: String) -> Bool {
-        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
-            return false
-        }
-        
-        guard let directory = try? FileManager.default.url(for: .documentDirectory,
-                                                           in: .userDomainMask,
-                                                           appropriateFor: nil,
-                                                           create: false) as NSURL else {
-            return false
-        }
-        
-        do {
-            try data.write(to: directory.appendingPathComponent(nameImage)!)
-            return true
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
-    }
-    
-    private func getSavedImage(named: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory,
-                                                  in: .userDomainMask,
-                                                  appropriateFor: nil,
-                                                  create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
-        }
-        return nil
-    }
-    
 }
 
 //MARK: UINavigationControllerDelegate, UIImagePickerControllerDelegate
@@ -141,8 +110,8 @@ extension DetailTaskViewController: UINavigationControllerDelegate, UIImagePicke
         DispatchQueue.main.async {
             self.taskImageView.contentMode = .scaleAspectFit
             self.taskImageView.image = pickedImage
-        
-        
+            
+            
             if self.saveImage(image: self.taskImageView.image!, nameImage: imgUrl.lastPathComponent) {
                 self.taskImageName = imgUrl.lastPathComponent
                 self.dismiss(animated: true, completion: nil)
@@ -164,4 +133,38 @@ extension DetailTaskViewController: UITextFieldDelegate, UITextViewDelegate {
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+}
+
+extension DetailTaskViewController: ImageSave, ImageGet {
+    func saveImage(image: UIImage, nameImage: String) -> Bool {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return false
+        }
+        
+        guard let directory = try? FileManager.default.url(for: .documentDirectory,
+                                                           in: .userDomainMask,
+                                                           appropriateFor: nil,
+                                                           create: false) as NSURL else {
+            return false
+        }
+        
+        do {
+            try data.write(to: directory.appendingPathComponent(nameImage)!)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory,
+                                                  in: .userDomainMask,
+                                                  appropriateFor: nil,
+                                                  create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
 }

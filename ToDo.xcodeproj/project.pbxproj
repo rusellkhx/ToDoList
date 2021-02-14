@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		421A13BA25D7B113001A304D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 421A13B925D7B112001A304D /* .gitignore */; };
+		421D490825D8F231000D8F73 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D490725D8F231000D8F73 /* Protocols.swift */; };
 		4222359E25D19B40007D2C2D /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222359D25D19B40007D2C2D /* NSDate.swift */; };
 		424A5EB125CFE8AE007CDB9C /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A5EB025CFE8AE007CDB9C /* DateTime.swift */; };
 		426F094825C411A700FD6113 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F094725C411A700FD6113 /* User.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		421A13B925D7B112001A304D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		421D490725D8F231000D8F73 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		4222359D25D19B40007D2C2D /* NSDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		424A5EB025CFE8AE007CDB9C /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		426F094725C411A700FD6113 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 				93A30981A97CF7E92ACB00F1 /* Pods_ToDo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		421D490625D8F217000D8F73 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				421D490725D8F231000D8F73 /* Protocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		426F094125C4074100FD6113 /* Model */ = {
@@ -169,6 +179,7 @@
 				426F094125C4074100FD6113 /* Model */,
 				4286095825C2E7AD002A7492 /* Extensions */,
 				426F096A25C45B0700FD6113 /* Controllers */,
+				421D490625D8F217000D8F73 /* Protocols */,
 				42D7E3A125C5CDA9006BCC9F /* View */,
 				42A5A1B725C1C92800F130D5 /* AppDelegate.swift */,
 				42A5A1BD25C1C92800F130D5 /* Main.storyboard */,
@@ -317,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4286095225C2E256002A7492 /* TaskViewCell.swift in Sources */,
+				421D490825D8F231000D8F73 /* Protocols.swift in Sources */,
 				42D939C225D307FA005FF8C8 /* UIView.swift in Sources */,
 				424A5EB125CFE8AE007CDB9C /* DateTime.swift in Sources */,
 				426F096425C4427300FD6113 /* Storage.swift in Sources */,

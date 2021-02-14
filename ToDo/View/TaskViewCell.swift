@@ -39,6 +39,7 @@ extension TaskViewCell: ToggleButtonDelegate, TaskViewCellProtocol {
         labelTitleTask.text = task.name
         labelDateTime.text = takeDateTime(dateTime: task.createdDateTime)
         completedButton.on = task.isCompleted
+        imageTask.image = getSavedImage(named: task.imageUrl)
     }
 
     func onTouched() {
@@ -47,5 +48,18 @@ extension TaskViewCell: ToggleButtonDelegate, TaskViewCellProtocol {
     
     func offTouched() {
         delegate?.didSetOff(from: self)
+    }
+}
+
+extension TaskViewCell: ImageGet {
+    
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory,
+                                                  in: .userDomainMask,
+                                                  appropriateFor: nil,
+                                                  create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
     }
 }
