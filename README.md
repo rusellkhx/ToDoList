@@ -25,10 +25,10 @@ This test project includes the following iOS pods like:
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListWarning_wrong_registration2.png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTasks.png"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTasksv2.png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListDetailTasksv2.png"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListDetailTask.png"/>
     </td>
     <td>
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTakeFotoForTaskOrDelete.png"/>
