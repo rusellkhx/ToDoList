@@ -28,7 +28,7 @@ This test project includes the following iOS pods like:
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTasks.png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListDetailTaskv2.png"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListDetailTasksv2.png"/>
     </td>
     <td>
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/ToDoListTakeFotoForTaskOrDelete.png"/>
