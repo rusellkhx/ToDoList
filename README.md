@@ -1,7 +1,7 @@
 # ToDoList
 Test project uses the MVС architectural pattern with Swift 5.0.
   - Used by storyboard to create screens
-  - Used to save and load selected images in a local directory
+  - Provides for editing the name of the task and notes, insert or remove an image for the task and then save the image in a local directory
 ## pods
 This test project includes the following iOS pods like:
   - Realm (used to saving and restoring data by task, sorting tasks by time)
