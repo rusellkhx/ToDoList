@@ -22,15 +22,8 @@ protocol StorageServiceProtocol {
 
 class StorageService: StorageServiceProtocol {
     
-    private var realm: Realm
-    
-    init() {
-        guard let realm = try? Realm() else {
-            fatalError() }
-        self.realm = realm
-    }
-    
     func addUser(_ login: String, _ password: String) -> String {
+        let realm = getRealm()
         if checkUser(user: login) {
             try! realm.write {
                 let user = User()
@@ -46,6 +39,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func checkUser(user: String) -> Bool {
+        let realm = getRealm()
         let usersList = realm.objects(User.self)
         for someUser in usersList {
             if user == someUser.login {
@@ -56,6 +50,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func verificationUser(user: String, password: String) -> Bool {
+        let realm = getRealm()
         let usersList = realm.objects(User.self)
         for someUser in usersList {
             if user == someUser.login && password == someUser.password {
@@ -66,6 +61,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func addNewTAsk(user: String, task: String?) {
+        let realm = getRealm()
         guard let task = task else { return }
         let newTaskList = Task()
         
@@ -81,16 +77,19 @@ class StorageService: StorageServiceProtocol {
     }
     
     func getTasksIsCompleted(user: String) -> [Task]? {
+        let realm = getRealm()
         let tasks = realm.objects(Task.self).filter({$0.login == user && $0.isCompleted})
         return tasks.sorted(by: {$0.createdDateTime > $1.createdDateTime })
     }
     
     func getTasksNoCompleted(user: String) -> [Task]? {
+        let realm = getRealm()
         let tasks = realm.objects(Task.self).filter({$0.login == user && !$0.isCompleted})
         return tasks.sorted(by: {$0.createdDateTime > $1.createdDateTime })
     }
     
     func deleteTask(indexTask: Task?) {
+        let realm = getRealm()
         guard let indexTask = indexTask else { return }
         try! realm.write {
             realm.delete(indexTask)
@@ -99,6 +98,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func changedStatusNoCompleted(indexTask: Task?) {
+        let realm = getRealm()
         guard let indexTask = indexTask else { return }
         try! realm.write({ () -> Void in
             indexTask.isCompleted = false
@@ -107,6 +107,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func changedStatusIsCompleted(indexTask: Task?) {
+        let realm = getRealm()
         guard let indexTask = indexTask else { return }
         try! realm.write({ () -> Void in
             indexTask.isCompleted = true
@@ -116,6 +117,7 @@ class StorageService: StorageServiceProtocol {
     }
     
     func changedTaskData(id: String?, name: String?, notes: String?, imageUrl: String?) {
+        let realm = getRealm()
         guard let id = id, let name = name else { return }
         let taskInRealmDatabase = realm.objects(Task.self).filter("id == %@", id)
         let taskHas = taskInRealmDatabase
@@ -126,6 +128,14 @@ class StorageService: StorageServiceProtocol {
             taskHas[0].imageUrl = imageUrl ?? ""
             realm.refresh()
         })
+    }
+    
+    private func getRealm() -> Realm {
+        do {
+            return try Realm()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
 }
