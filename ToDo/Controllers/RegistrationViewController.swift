@@ -18,10 +18,9 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTapGestureToHideKeyboard()
         startElementsInTextField()
         registerForKeyboardNotifications()
-        setupView()
-    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,45 +73,10 @@ class RegistrationViewController: UIViewController {
             showMessageAlert(storageSrvice.addUser(login, password))
         }
     }
-    
-    private func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow),
-                                               name: UIResponder.keyboardDidShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide),
-                                               name: UIResponder.keyboardDidHideNotification,
-                                               object: nil)
-    }
-    
-    private func setupView() {
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                         action: #selector(handleTap(_:))))
-    }
 }
 
 //MARK: UITextFieldDelegate
 extension RegistrationViewController: UITextFieldDelegate {
-    
-    @objc func kbDidShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else { return }
-        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.bounds.size.width,
-                                                          height: self.view.bounds.size.height + kbFrameSize.height)
-        
-        (self.view as! UIScrollView).scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0,
-                                                                          bottom: kbFrameSize.height,
-                                                                          right: 0)
-    }
-    
-    @objc private func kbDidHide() {
-        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.bounds.size.width,
-                                                          height: self.view.bounds.size.height)
-    }
-    
-    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
     
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, text.count > 0 else {
