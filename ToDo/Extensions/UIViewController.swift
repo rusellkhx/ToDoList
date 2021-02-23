@@ -87,6 +87,13 @@ extension UIViewController {
         print("\(title ?? ""): \(function)")
     }
     
+    func startBiginTextInTextField(textUITextField: UITextField) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            textUITextField.becomeFirstResponder()
+        }
+    }
+    
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow),
                                                name: UIResponder.keyboardDidShowNotification,

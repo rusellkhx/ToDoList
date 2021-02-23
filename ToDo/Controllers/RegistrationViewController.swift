@@ -21,11 +21,12 @@ class RegistrationViewController: UIViewController {
         addTapGestureToHideKeyboard()
         startElementsInTextField()
         registerForKeyboardNotifications()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startBiginTextInTextField()
+        startBiginTextInTextField(textUITextField: newLoginTextField)
     }
     
     //MARK: IBAction func
@@ -47,13 +48,6 @@ class RegistrationViewController: UIViewController {
         
         newPasswordRepeatTextField.delegate = self
         newPasswordRepeatTextField.tag = TextFieldTag.passwordRepeat.rawValue
-    }
-    
-    private func startBiginTextInTextField() {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            self.newLoginTextField.becomeFirstResponder()
-        }
     }
     
     private func checkRegistration() {

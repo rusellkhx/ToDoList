@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
         
         textFieldLogin.text = nil
         textFieldPassword.text = nil
-        printMessage()
     }
     
     //MARK: IBAction func
@@ -72,13 +71,6 @@ class LoginViewController: UIViewController {
         
         textFieldPassword.delegate = self
         textFieldPassword.tag = TextFieldTag.password.rawValue
-    }
-    
-    private func startBiginText() {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            self.textFieldLogin.becomeFirstResponder()
-        }
     }
     
     private func pressedRegistration() {
